@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>party-home</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_874301_bce6e9r05gp.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+    function resizeWindow(){
+      let deviceWidth = document.documentElement.clientWidth;
+      let rootRem = deviceWidth / 7.2 //设计稿的宽度是720px
+      document.documentElement.style.fontSize = rootRem + 'px'
+    }
+    resizeWindow()
+  </script>
+</html>

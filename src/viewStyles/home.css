@@ -1,0 +1,120 @@
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  padding: 0 0.44rem ;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 7.2rem;
+  height: 1.11rem;
+  line-height: 1.11rem;
+  background: #c50206;
+}
+.top .top_left {
+  width: 3.2rem;
+  height: 1.11rem;
+  background: url('/static/img/logo.png') no-repeat;
+  background-size: 2.6rem 0.7rem;
+  background-position: 0 0.2rem;
+}
+.top .tip_right {
+  font-size: 0.36rem;
+  color: #fff;
+}
+.top .tip_right a {
+  color: #fff;
+}
+.lunbo {
+  height: 2.92rem;
+}
+.lunbo img {
+  width: 7.2rem;
+  height: 2.92rem;
+  display: block;
+}
+.lunbo span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  padding-left: 0.3rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.24rem;
+  color: #fff;
+}
+.lunboImg {
+  height: 2.92rem;
+  overflow: hidden;
+}
+.lunboImg li {
+  position: relative;
+  float: left;
+}
+.reptile {
+  display: none;
+}
+.news {
+  height: 0.9rem;
+  line-height: 0.9rem;
+  font-size: 0.28rem;
+  padding: 0 0.32rem 0 1.5rem;
+  box-sizing: border-box;
+  background: url('/static/img/yaowenicon.png') no-repeat 0.32rem 0.22rem;
+  background-size: 0.88rem;
+}
+.news a {
+  color: #6d6e71;
+}
+.navicon {
+  height: 3.8rem;
+  background: url('/static/img/bt_bg.png') no-repeat;
+  background-size: 100%;
+}
+.navicon ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.navicon ul li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 2.4rem;
+  height: 1.9rem;
+  font-size: 0.24rem;
+  color: #6d6e71;
+}
+.navicon ul li a img {
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+.imgnav {
+  height: 1.74rem;
+  background: url('/static/img/banner01.png') no-repeat;
+  background-size: 7.2rem 1.74rem;
+}
+.imgnav2 {
+  display: flex;
+  height: 3.2rem;
+  background: url('/static/img/tese.png') no-repeat;
+  background-size: 7.2rem 3.2rem;
+}
+.imgnav2 .imgnav_left {
+  flex: 1;
+}
+.imgnav2 .imgnav_right {
+  flex: 2;
+}
+.imgnav2 .imgnav_right .row {
+  display: flex;
+  height: 50%;
+}
+.imgnav2 .imgnav_right .row a {
+  flex: 1;
+}
