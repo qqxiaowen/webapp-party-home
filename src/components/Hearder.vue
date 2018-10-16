@@ -1,15 +1,68 @@
 <template>
-    <div>
-        我是头部
+    <div class="hearder-top">
+        <div class="box-back" v-if="isShowBack" @click="$router.back()"><i ></i></div>
+        {{$router.history.current.meta.desc}}
     </div>
 </template>
 
 <script>
     export default {
+        data(){
+            return{
+
+            }
+        },
+        methods: {
+            
+        },
+        created(){
+            // console.log(this.$route.meta.desc)
+        },
+        computed:{
+            isShowBack(){
+                let title = this.$route.meta.desc
+                if(title == '通知早知道' || title =='我的党建'){
+                    return false;
+                }else{
+                    return true;
+                }   
+            }
+        }
         
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+.hearder-top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    width: 7.2rem;
+    padding: 0 0.44rem ;
+    box-sizing: border-box;
+    width: 7.2rem;
+    height: 1.11rem;
+    color: #fff;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 1.11rem;
+    background: #c50206;
+   .box-back{
+        position: absolute;
+        left: 0.2rem;
+        width: 1rem;
+        height: 1.11rem;
+        i{
+            display: block;
+            margin: 0.44rem auto;
+            width: 0.2rem;
+            height: 0.2rem;
+            border-top: 1px solid #fff;
+            border-right: 1px solid #fff;
+            transform: rotateZ(-135deg)
+        }
+    }
+}
 </style>

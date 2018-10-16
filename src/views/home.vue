@@ -12,10 +12,10 @@
             </div>
         </div>
         <div class="lunbo">
-             <swiper :options="swiperOption">
-                <swiper-slide v-for="(item, index) in swiperSlides" :key="index">
-                    <img :src= "item.imgsrc" >
-                    <span>{{item.desc}}</span>
+             <swiper :options="swiperOption" >
+                <swiper-slide v-for="(item, index) in LunboData" :key="index">
+                    <img :src= "item.imgUrl" >
+                    <span>{{item.title}}</span>
                     </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
@@ -62,32 +62,55 @@
             swiperSlide,
             Footer
         },
-         data() {
-      return {
-        swiperOption: {
-          pagination: {
-            el: '.swiper-pagination'
-          }
-        },
-        swiperSlides:[
-            {
-                imgsrc:'/static/img/banner.png',
-                desc:'123456'
+        data() {
+        return {
+            // 轮播图配置
+            swiperOption: {
+            autoplay:true,
+            loop:true,
+            pagination: { el: '.swiper-pagination' },
+            speed:300,
+            autoplay: { delay: 2000, },
+            on:{
+                    click: function(){
+                    alert('你点了Swiper'+this.activeIndex);
+                    },
+                },
             },
-            {
-                imgsrc:'/static/img/banner1.png',
-                desc:'654321'
-            },
-            {
-                imgsrc:'/static/img/banner01.png',
-                desc:'654321'
-            }
-        ]
-        
-      }
+            // 数据
+            LunboData:[
+                // {
+                //     imgUrl:'/static/img/banner.png',
+                //     desc:'123456'
+                // },
+                // {
+                //     imgUrl:'/static/img/banner1.png',
+                //     desc:'654321'
+                // },
+                // {
+                //     imgUrl:'/static/img/banner01.png',
+                //     desc:'654321'
+                // },
+                // {
+                //     imgUrl:'/static/img/banner01.png',
+                //     desc:'654321'
+                // }
+            ]
+        }
     },
-    mounted() {
+    methods:{
+        getLunboData(){
+            this.$axios.get(`/carousel/carouselList.do`).then(res => {
+                console.log(res)
+                if(res.code == 1){
+                    this.LunboData = res.rows
+                }
+            })
+        }
       
+    },
+    created(){
+        this.getLunboData()
     }
 
     }

@@ -82,7 +82,7 @@
 .navicon ul li a {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center ;
   align-items: center;
   width: 2.4rem;
   height: 1.9rem;
@@ -93,6 +93,7 @@
   display: block;
   width: 0.8rem;
   height: 0.8rem;
+  padding-bottom: 0.16rem;
 }
 .imgnav {
   height: 1.74rem;

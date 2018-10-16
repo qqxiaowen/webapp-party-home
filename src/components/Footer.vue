@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
        <ul>
-           <li><router-link :class="{active:$route.name === 'home'}" to="/"><i class="iconfont icon-dangwugongkai"></i>首页</router-link></li>
-           <li><router-link :class="{active:$route.name === 'message'}" to="/"><i class="iconfont icon-xiaoxi4"></i>通知早知道</router-link></li>
-           <li><router-link :class="{active:$route.name === 'myself'}" to="/"><i class="iconfont icon-wodedangxuan"></i>我的党建</router-link></li>
+           <li><router-link :class="{active:$route.meta.name === 'home'}" to="/"><i class="iconfont icon-dangwugongkai"></i>首页</router-link></li>
+           <li><router-link :class="{active:$route.meta.name === 'message'}" to="/message"><i class="iconfont icon-xiaoxi4"></i>通知早知道</router-link></li>
+           <li><router-link :class="{active:$route.meta.name === 'myself'}" to="/myself"><i class="iconfont icon-wodedangxuan"></i>我的党建</router-link></li>
        </ul>
     </div>
 </template>
@@ -35,7 +35,7 @@
             width: 2.6rem;
             height: 1.04rem;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content:center;
             // line-height: 1.04rem;
             align-items: center;
             // text-align: center;
@@ -47,7 +47,9 @@
             
         }
         .active{
-                color: #c7000a;
+            color: #c7000a;
+            margin-top: -2px;
+            border-top: 2px solid #ef473a;
         }
     }
 }
