@@ -1,7 +1,6 @@
 <template>
     <div class="message pt110 pb104">
         <Hearder/>
-
         <div class="messageItem clearfix" v-for="(item,index) in newdata" :key=index >
             <div @click="handleNewDetail(item.newsId)">
                 <div class="messLeft fll"></div>
@@ -15,16 +14,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="messNull" v-if="isshow">
-            <span class="span1"></span>
-            <span class="span2">我是有底线的</span>
-        </div>
-        
-        <div class="messNull" v-if="!newdata">
-            <span class="span1"></span>
-            <span class="span2">暂时没有任何消息</span>
-        </div>
+        <img v-if="isloading" class="loading" src="/static/svg/loading.gif" alt="">
+        <Tofoot v-if="isshow"/>
+        <Nullcontent v-if="!newdata&&!isloading" />
         <Footer />
     </div>
 </template>
@@ -32,11 +24,15 @@
 <script>
 import Hearder from '../components/Hearder'
 import Footer from '../components/Footer'
+import Tofoot from '../components/Tofoot'
+import Nullcontent from '../components/Nullcontent'
 import {handletime} from '../utils'
     export default {
         components:{
             Hearder,
-            Footer
+            Footer,
+            Tofoot,
+            Nullcontent
         },
         data(){
             return{
@@ -44,6 +40,7 @@ import {handletime} from '../utils'
                 page:1,
                 size:2,
                 isshow:false,
+                isloading:true,
             }
         },
         methods:{
@@ -54,6 +51,7 @@ import {handletime} from '../utils'
                     this.page = this.page+1
                     this.getdata()
                 }else{
+                    this.isloading = false;
                     this.isshow = true;
                 }
                 
@@ -61,6 +59,7 @@ import {handletime} from '../utils'
             },
             handleNewDetail(id){
                 console.log(id)
+                this.$router.push(`/NewDadil/${id}`)
             }
         },
         created(){

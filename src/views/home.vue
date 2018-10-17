@@ -12,25 +12,29 @@
             </div>
         </div>
         <div class="lunbo">
-             <swiper :options="swiperOption" >
-                <swiper-slide v-for="(item, index) in LunboData" :key="index">
-                    <img :src= "item.imgUrl" >
-                    <span>{{item.title}}</span>
-                    </swiper-slide>
+
+            <swiper :options="secondOptions">
+                <swiper-slide v-for="(item) in LunboData" :key="item.id">
+                     <div @click="handleNewDetail(item.url)">
+                        <img :src= "item.imgUrl" >
+                        <span>{{item.title}}</span>
+                    </div>
+                </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
+
         </div>
         <div class="news">
            <router-link to='/'>习近平：加强党对xxx共偶作的指导</router-link> 
         </div>
         <div class="navicon">
             <ul>
-                <li><router-link to='/'><img src="/static/img/icon_01.png">信工新闻眼</router-link></li>
-                <li><router-link to='/'><img src="/static/img/icon_02.png">党员与组织</router-link></li>
+                <li><router-link to='/dadilEyes'><img src="/static/img/icon_01.png">信工新闻眼</router-link></li>
+                <li><router-link to='/life'><img src="/static/img/icon_02.png">党员与组织</router-link></li>
                 <li><router-link to='/'><img src="/static/img/icon_03.png">党员云互动</router-link></li>
-                <li><router-link to='/'><img src="/static/img/icon_04.png">党建一点通</router-link></li>
-                <li><router-link to='/'><img src="/static/img/icon_05.png">党员亮身份</router-link></li>
-                <li><router-link to='/'><img src="/static/img/icon_06.png">党史上的今天</router-link></li>
+                <li><router-link to='/oneclick'><img src="/static/img/icon_04.png">党建一点通</router-link></li>
+                <li><router-link to='/showrank'><img src="/static/img/icon_05.png">党员亮身份</router-link></li>
+                <li><router-link to='/partytoday'><img src="/static/img/icon_06.png">党史上的今天</router-link></li>
             </ul>
         </div>
         <div class="imgnav"></div>
@@ -38,12 +42,12 @@
             <div class="imgnav_left"></div>
             <div class="imgnav_right">
                 <div class="row">
-                    <router-link to='/1'></router-link>
-                    <router-link to='/2'></router-link>
+                    <router-link to='/anystudy'></router-link>
+                    <router-link to='/anyphoto'></router-link>
                 </div>
                 <div class="row">
-                    <router-link to='/3'></router-link>
-                    <router-link to='/4'></router-link>
+                    <router-link to='/system'></router-link>
+                    <router-link to='/activity'></router-link>
                 </div>
             </div>
         </div>
@@ -65,36 +69,23 @@
         data() {
         return {
             // 轮播图配置
-            swiperOption: {
-            autoplay:true,
-            loop:true,
-            pagination: { el: '.swiper-pagination' },
-            speed:300,
-            autoplay: { delay: 2000, },
-            on:{
+            secondOptions: {
+                autoplay: false,
+                loop:true,
+                pagination : '.swiper-pagination',
+                // paginationClickable :true,
+                // mousewheelControl : true,
+                // observeParents:true,
+                on:{
                     click: function(){
                     alert('你点了Swiper'+this.activeIndex);
                     },
                 },
             },
+            
             // 数据
             LunboData:[
-                // {
-                //     imgUrl:'/static/img/banner.png',
-                //     desc:'123456'
-                // },
-                // {
-                //     imgUrl:'/static/img/banner1.png',
-                //     desc:'654321'
-                // },
-                // {
-                //     imgUrl:'/static/img/banner01.png',
-                //     desc:'654321'
-                // },
-                // {
-                //     imgUrl:'/static/img/banner01.png',
-                //     desc:'654321'
-                // }
+               
             ]
         }
     },
@@ -103,15 +94,25 @@
             this.$axios.get(`/carousel/carouselList.do`).then(res => {
                 console.log(res)
                 if(res.code == 1){
-                    this.LunboData = res.rows
+                    this.$nextTick(() => {
+                        this.LunboData = res.rows
+                    })
                 }
             })
+        },
+        handleNewDetail(id){
+            this.$router.push(`/NewDadil/${id}`)
         }
       
     },
     created(){
         this.getLunboData()
-    }
+    },
+    // computed: {
+    //   swiper() {
+    //     return this.$refs.mySwiper.swiper
+    //   }
+    // }
 
     }
 </script>

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 var instance = axios.create({
     baseURL: '/api',
-    timeout: 1500,
+    timeout: 14000,
 });
 export const  $axios = {
     get(url,data,config){

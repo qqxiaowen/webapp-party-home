@@ -1,23 +1,26 @@
 <template>
     <div class="hearder-top">
         <div class="box-back" v-if="isShowBack" @click="$router.back()"><i ></i></div>
-        {{$router.history.current.meta.desc}}
+        <span v-text="title||$route.meta.desc"></span>
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            title: {
+                type: String
+            }
+        },
         data(){
             return{
-
+                
             }
         },
         methods: {
             
         },
-        created(){
-            // console.log(this.$route.meta.desc)
-        },
+
         computed:{
             isShowBack(){
                 let title = this.$route.meta.desc
@@ -26,7 +29,7 @@
                 }else{
                     return true;
                 }   
-            }
+            },
         }
         
     }
