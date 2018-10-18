@@ -59,7 +59,7 @@ import {handletime} from '../utils'
             },
             handleNewDetail(id){
                 console.log(id)
-                this.$router.push(`/NewDadil/${id}`)
+                this.$router.push(`/newDetail/${id}`)
             }
         },
         created(){

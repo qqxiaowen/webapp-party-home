@@ -31,6 +31,9 @@ import Hearder from '../../components/Hearder'
                     this.isloading = false;
                     this.nwedetail = res.data
                     switch(res.data.type){
+                        case 8:
+                            this.title = '政治学习';
+                            break;
                         case 7:
                             this.title = '随时随地拍';
                             break;
@@ -58,7 +61,6 @@ import Hearder from '../../components/Hearder'
                         default:
                             break;
                     }
-                    // console.log(res.data.type)
                 })
             }
         },
@@ -69,40 +71,5 @@ import Hearder from '../../components/Hearder'
     }
 </script>
 
-<style scoped lang='less'>
-.detail{
-    padding: 0.2rem;
-    .title{
-        font-size: 0.5rem;
-        margin: 0.2rem 0;
-    }
-        .content{
-            line-height: 0.5rem;
-            /deep/ p{
-                font-size: 12px;
-                margin: 0.2rem 0;
-            }
-            /deep/ h2{
-                font-size: 22px;
-                margin: 0.2rem 0;
-                font-weight: 500;
-            }
-            /deep/ h4{
-                font-size: 18px;
-                margin: 0.2rem 0;
-                font-weight: 500;
-            }
-            /deep/ span{
-                font-size: 16px;
-            }
-            /deep/ img{
-            display: block;
-            max-width:100%;
-            margin: 0.2rem 0;
-            }
-        }
-   
-}
 
-</style>
 

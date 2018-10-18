@@ -5,7 +5,7 @@
         <div v-infinite-scroll="handleBootom"
             infinite-scroll-disabled="loading" >
             <div v-for="(item,index) in newData" :key="index" >
-                <div class="newitem" @click="$router.push(`/NewDadil/${item.newsId}`)">
+                <div class="newitem" @click="$router.push(`/newDetail/${item.newsId}`)">
                     <div class="left">
                         <img :src="item.pic" alt="">
                     </div>
@@ -70,7 +70,7 @@ import Nullcontent from '@/components/Nullcontent'
             }
         },
         created(){
-            switch(this.$route.meta.name){
+            switch(this.$route.name){
                 case 'dadilEyes':
                     this.type = 0 
                     break;
@@ -88,6 +88,11 @@ import Nullcontent from '@/components/Nullcontent'
                     break;
                 case 'anystudy':
                     this.type = 6
+                    break;
+                case 'study':
+                    this.type = 8
+                    break;
+                default:
                     break;
             }
             this.getdata()

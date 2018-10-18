@@ -15,22 +15,22 @@
 
             <swiper :options="secondOptions">
                 <swiper-slide v-for="(item) in LunboData" :key="item.id">
-                     <div @click="handleNewDetail(item.url)">
+                     <router-link :to="{name: 'newDetail', params: {id:item.url}}">
                         <img :src= "item.imgUrl" >
                         <span>{{item.title}}</span>
-                    </div>
+                    </router-link>
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
 
         </div>
         <div class="news">
-           <router-link to='/'>习近平：加强党对xxx共偶作的指导</router-link> 
+           <router-link :to="{path:'/xxx',params:{id:'123'}}">习近平：加强党对xxx共偶作的指导</router-link> 
         </div>
         <div class="navicon">
             <ul>
                 <li><router-link to='/dadilEyes'><img src="/static/img/icon_01.png">信工新闻眼</router-link></li>
-                <li><router-link to='/life'><img src="/static/img/icon_02.png">党员与组织</router-link></li>
+                <li><router-link to='/life'><img src="/static/img/icon_02.png">掌上组织生活</router-link></li>
                 <li><router-link to='/'><img src="/static/img/icon_03.png">党员云互动</router-link></li>
                 <li><router-link to='/oneclick'><img src="/static/img/icon_04.png">党建一点通</router-link></li>
                 <li><router-link to='/showrank'><img src="/static/img/icon_05.png">党员亮身份</router-link></li>
@@ -78,7 +78,7 @@
                 // observeParents:true,
                 on:{
                     click: function(){
-                    alert('你点了Swiper'+this.activeIndex);
+                        alert('你点了Swiper'+this.activeIndex);
                     },
                 },
             },

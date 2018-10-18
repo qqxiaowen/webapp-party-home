@@ -5,17 +5,25 @@
             <img src="/static/img/timg.jpg" alt="">
         </div>
         <div class="iconlink clearfix">
+            <router-link to="/study" class="icon-item fll">
+                <img src="/static/img/icon1.png" alt="">
+                <span>政治学习</span>
+            </router-link>
             <router-link to="" class="icon-item fll">
-                <img src="" alt="">
-                <!-- <span>政治学习</span> -->
+                <img src="/static/img/icon2.png" alt="">
+                <span>思想汇报</span>
             </router-link>
-             <router-link to="" class="icon-item fll">
-                <img src="" alt="">
-                <!-- <span>政治学习</span> -->
+            <router-link to="" class="icon-item fll">
+                <img src="/static/img/icon3.png" alt="">
+                <span>心得总结</span>
             </router-link>
-             <router-link to="" class="icon-item fll">
-                <img src="" alt="">
-                <!-- <span>政治学习</span> -->
+            <router-link to="" class="icon-item fll">
+                <img src="/static/img/icon4.png" alt="">
+                <span>民主评议</span>
+            </router-link>
+            <router-link to="/findteam" class="icon-item fll">
+                <img src="/static/img/icon5.png" alt="">
+                <span>流动党员找组织</span>
             </router-link>
         </div>
     </div>
@@ -41,8 +49,22 @@ import Hearder from '@/components/Hearder'
 }
 .iconlink{
     .icon-item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
         margin: 0.2rem;
         width: 2rem;
+        padding: 0.2rem;
+        box-sizing: border-box;
+        img{
+            width: 100%;
+        }
+        span{
+            color: #666;
+            padding-top: 0.2rem;
+            font-size: 0.24rem;
+        }
     }
 }
 </style>

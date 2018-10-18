@@ -11,11 +11,12 @@ const components = {
   message:()=>import('@/views/message'),
   myself:()=>import('@/views/myself'),
   login:()=>import('@/views/login'),
-  NewDadil:()=>import('@/views/newsPage/NewDadil'),
+  newDetail:()=>import('@/views/newsPage/newDetail'),
   NewList:()=>import('@/views/newsPage/NewList'),
   partytoday:()=>import('@/views/newsPage/partytoday'),
   anyphoto:()=>import('@/views/newsPage/anyphoto'),
   life:()=>import('@/views/life'),
+  findteam:()=>import('@/views/findteam'),
 }
 
 const router = new Router({
@@ -23,115 +24,132 @@ const router = new Router({
     {
       path: '/',
       meta:{
-        name: 'home',
         desc:'首页',
       },
+      name: 'home',
       component: home
     },
     {
       path:'/message',
       meta:{
-        name:'message',
         desc:'通知早知道',
       },
+      name:'message',
       component:components.message
     },
     {
       path:'/myself',
       meta:{
-        name:'myself',
         desc:'我的党建',
       },
+      name:'myself',
       component:components.myself
     },
     {
       path:'/login',
       meta:{
-        name:'login',
         desc:'登录',
       },
+      name:'login',
       component:components.login
     },
     {
       path:'/partytoday',
       meta:{
-        name:'partytoday',
         desc:'党史上的今天',
       },
+      name:'partytoday',
       component:components.partytoday
     },
     {
-      path:'/NewDadil/:id',
+      path:'/newDetail/:id',
       meta:{
-        name:'NewDadil',
         desc:'',
       },
-      component:components.NewDadil
+      name: 'newDetail',
+      component:components.newDetail
     },
     {
       path:'/dadilEyes',
       meta:{
-        name:'dadilEyes',
         desc:'信工新闻眼',
       },
+      name:'dadilEyes',
       component:components.NewList
     },
     {
       path:'/oneclick',
       meta:{
-        name:'oneclick',
         desc:'党建一点通',
       },
+      name:'oneclick',
       component:components.NewList
     },
     {
       path:'/showrank',
       meta:{
-        name:'showrank',
         desc:'党员亮身份',
       },
+      name:'showrank',
       component:components.NewList
     },
     {
       path:'/anystudy',
       meta:{
-        name:'anystudy',
         desc:'随时随地学',
       },
+      name:'anystudy',
+      component:components.NewList
+    },
+    {
+      path:'/study',
+      meta:{
+        desc:'政治学习',
+      },
+      name:'study',
       component:components.NewList
     },
     {
       path:'/anyphoto',
       meta:{
-        name:'anyphoto',
         desc:'随时随地拍',
       },
+      name:'anyphoto',
       component:components.anyphoto
     },
     {
       path:'/system',
       meta:{
-        name:'system',
         desc:'制度建设',
       },
+      name:'system',
       component:components.NewList
     },
     {
       path:'/activity',
       meta:{
-        name:'activity',
         desc:'特色活动',
       },
+      name:'activity',
       component:components.NewList
     },
     {
       path:'/life',
       meta:{
-        name:'life',
         desc:'掌上组织生活',
       },
+      name:'life',
       component:components.life
     },
+    {
+      path:'/findteam',
+      meta:{
+        desc:'流动党员找组织',
+      },
+      name:'findteam',
+      component:components.findteam
+    },
+    
   ]
 })
 

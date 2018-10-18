@@ -7,7 +7,7 @@
                 <router-link to="/login"><img src="/static/img/头像.png" alt=""></router-link> 
             </div>
             <div class="username">
-                <router-link to="/login">马上登陆，获取xxx</router-link> 
+                <router-link to="/login">你还没有登录，请登录</router-link> 
             </div>
         </div>
         <div class="my-nav">
@@ -56,8 +56,8 @@ import Footer from '../components/Footer'
         components:{
             Hearder,
             Footer
-        }
-        
+        },
+       
     }
 </script>
 

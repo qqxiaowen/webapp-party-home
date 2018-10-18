@@ -3,11 +3,11 @@
         <Hearder />
         <img src="/static/img/logo.png" alt="">
         <form action="form" @submit.prevent>
-            <input v-model="forData.username"  type="text" placeholder="身份证号：">
+            <input v-model="forData.id_card"  type="text" placeholder="身份证号：">
             <span>
                 <input v-model="forData.password" class="pwd" type="password" placeholder="密码：">
             </span>
-            <button>登录</button>
+            <button @click="handlelogin">登录</button>
         </form>
     </div>
 </template>
@@ -21,11 +21,18 @@ import Hearder from '../components/Hearder'
         data(){
             return{
                 forData:{
-                    username:'',
+                    id_card:'',
                     password:''
                 }
             }
-        }
+        },
+        methods:{
+            handlelogin(){
+                this.$axios.post(`/user/userLogin.do`,this.forData).then(res => {
+                    console.log(res)
+                })
+            }
+        },
         
     }
 </script>

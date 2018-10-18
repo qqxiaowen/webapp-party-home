@@ -1,8 +1,12 @@
 import axios from 'axios'
+import qs from 'qs'
 
 var instance = axios.create({
     baseURL: '/api',
-    timeout: 14000,
+    timeout: 15000,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
 });
 export const  $axios = {
     get(url,data,config){
@@ -16,7 +20,11 @@ export const  $axios = {
     },
     fetch(url,data,config,methods){
         return new Promise((resolve,rejects) => {
-            instance[methods](url,data,config).then(res => {
+            
+            console.log(data)
+            let queryData = qs.stringify(data)
+            console.log(queryData)
+            instance[methods](url,queryData,config).then(res => {
                 resolve(res.data)
             }).catch(err => {
                 rejects(err)
@@ -24,10 +32,10 @@ export const  $axios = {
         })
     },
     post(url,data,config){
-        return this.fetch(url,data,config,post)
+        return this.fetch(url,data,config,'post')
     },
     put(url,data,config){
-        return this.fetch(url,data,config,put)
+        return this.fetch(url,data,config,'put')
     }
 }
 
