@@ -17,6 +17,9 @@ const components = {
   anyphoto:()=>import('@/views/newsPage/anyphoto'),
   life:()=>import('@/views/life'),
   findteam:()=>import('@/views/findteam'),
+  interaction:()=>import('@/views/interaction'),
+  info:()=>import('@/views/personage/info'),
+  updateinfo:()=>import('@/views/personage/updateinfo'),
 }
 
 const router = new Router({
@@ -148,6 +151,30 @@ const router = new Router({
       },
       name:'findteam',
       component:components.findteam
+    },
+    {
+      path:'/interaction',
+      meta:{
+        desc:'党员云互动',
+      },
+      name:'interaction',
+      component:components.interaction
+    },
+    {
+      path:'/info',
+      meta:{
+        desc:'个人信息',
+      },
+      name:'info',
+      component:components.info
+    },
+    {
+      path:'/updateinfo',
+      meta:{
+        desc:'修改个人信息',
+      },
+      name:'updateinfo',
+      component:components.updateinfo
     },
     
   ]

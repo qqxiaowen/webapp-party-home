@@ -2,7 +2,7 @@
     <div class="myself pt110 pb104">
         <Hearder />
 
-        <div class="userbox">
+        <div class="userbox" v-if="!$store.state.userinfo">
             <div class="userimg">
                 <router-link to="/login"><img src="/static/img/头像.png" alt=""></router-link> 
             </div>
@@ -10,39 +10,52 @@
                 <router-link to="/login">你还没有登录，请登录</router-link> 
             </div>
         </div>
+        
+        <div class="userbox" v-else>
+            <div class="userimg">
+                <router-link to ><img v-lazy="$store.state.userinfo.header" alt=""></router-link> 
+            </div>
+            <div class="username">
+                {{$store.state.userinfo.username}}
+            </div>
+        </div>
+
         <div class="my-nav">
-            <router-link class="my-nav-item" to="/">
+            <div class="my-nav-item" @click="handleMyinfo">
                 <div class="nav-right flr">
                     <i></i>
                 </div>
                 <div class="nav-left">
                    <img src="/static/img/person.png" alt=""> 个人信息
                 </div>
-            </router-link>
-            <router-link class="my-nav-item" to="/">
+            </div>
+            <div class="my-nav-item" >
                 <div class="nav-right flr">
                     <i></i>
                 </div>
                 <div class="nav-left">
                    <img src="/static/img/lxjf.png" alt=""> 个人量化积分
                 </div>
-            </router-link>
-            <router-link class="my-nav-item" to="/">
+            </div>
+            <div class="my-nav-item" >
                 <div class="nav-right flr">
                     <i></i>
                 </div>
                 <div class="nav-left">
                    <img src="/static/img/xgmm.png" alt=""> 修改密码
                 </div>
-            </router-link>
-            <router-link class="my-nav-item" to="/">
+            </div>
+            <div class="my-nav-item" >
                 <div class="nav-right flr">
                     <i></i>
                 </div>
                 <div class="nav-left">
-                   <img src="/static/img/icon3.png" alt=""> 修改密码
+                   <img src="/static/img/icon3.png" alt=""> 党费缴纳
                 </div>
-            </router-link>
+            </div>
+        </div>
+        <div class="loginout" v-if="$store.state.userinfo">
+            <button @click="handleLoginOut">退出登录</button>
         </div>
         
         <Footer />
@@ -52,11 +65,34 @@
 <script>
 import Hearder from '../components/Hearder'
 import Footer from '../components/Footer'
+import { islogin } from '@/utils/redlogin'
+
+import { Indicator } from 'mint-ui';
     export default {
         components:{
             Hearder,
             Footer
         },
+        methods:{
+            handleLoginOut(){
+                let userinfo = ''
+                let token = ''
+                Indicator.open('正在退出...');
+                setTimeout(() => {
+                    Indicator.close();
+                    this.$store.commit('CHANGEINFO',userinfo) //清空vuex里数据
+                    this.$store.commit('CHANGETOKEN',token) //清空vuex里数据
+                }, 300);
+            },
+            handleMyinfo(){
+                islogin('info', this)
+                // if(this.$store.state.userinfo){
+                //     this.$router.push(`/info`)
+                // }else{
+                //     this.$router.push(`/login?redirect=info`)
+                // }
+            }
+        }
        
     }
 </script>
@@ -83,6 +119,7 @@ import Footer from '../components/Footer'
         line-height: 0.3rem;
         font-size: 0.26rem;
         text-align: center;
+        color: #ffffff;
         a{
         color: #ffffff;
         }
@@ -117,6 +154,21 @@ import Footer from '../components/Footer'
             width: 0.66rem;
             height: 0.66rem;
         }
+    }
+}
+.loginout{
+    padding: 0.7rem 0.2rem 0;
+    button{
+        display: block;
+        width:100%;
+        height: 0.8rem;
+        margin: 0 auto;
+        text-align: center;
+        background: #e43228;
+        color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 4px;
     }
 }
 </style>

@@ -21,6 +21,7 @@
     text-align: center;
     color: #666;
     font-size: 0.28rem;
+    background: #e8e8e8;
     .span1{
         position:absolute;
         left: 0;
@@ -33,7 +34,7 @@
     .span2{
         position: relative;
         padding: 0 0.2rem;
-        background: #fff;
+        background: #e8e8e8;
         z-index: 996;
     }
 }

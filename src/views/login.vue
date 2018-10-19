@@ -14,6 +14,7 @@
 
 <script>
 import Hearder from '../components/Hearder'
+import { Indicator,Toast } from 'mint-ui';
     export default {
         components:{
             Hearder
@@ -30,8 +31,38 @@ import Hearder from '../components/Hearder'
             handlelogin(){
                 this.$axios.post(`/user/userLogin.do`,this.forData).then(res => {
                     console.log(res)
+                    if(res.code == 1){
+                        let partyStatusName = ''
+                        switch(res.data. partyStatus){
+                            case 0:
+                                partyStatusName = '积极分子'
+                                break;
+                            case 1:
+                                partyStatusName = '预备党员'
+                                break;
+                            case 2:
+                                partyStatusName = '党员'
+                                break;
+                            default: break;
+                        }
+                        res.data.partyStatusName = partyStatusName
+                        this.$store.commit('CHANGEINFO',res.data)
+                        this.$store.commit('CHANGETOKEN',res.token)
+                        Indicator.open('登陆中...');
+                        let url ='myself'
+                        if(this.$route.query&&this.$route.query.redirect){
+                            url = this.$route.query.redirect
+                        }
+                        setTimeout(() => {
+                            this.$router.push(`/${url}`)
+                            Indicator.close();
+                        }, 300);
+                    }else{
+                        Toast(res.msg);
+                    }
                 })
-            }
+            },
+
         },
         
     }

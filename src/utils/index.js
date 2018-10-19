@@ -1,11 +1,13 @@
 import axios from 'axios'
 import qs from 'qs'
+import store from '../store'
 
 var instance = axios.create({
     baseURL: '/api',
     timeout: 15000,
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'token' : store.state.token
     }
 });
 export const  $axios = {
@@ -21,9 +23,7 @@ export const  $axios = {
     fetch(url,data,config,methods){
         return new Promise((resolve,rejects) => {
             
-            console.log(data)
             let queryData = qs.stringify(data)
-            console.log(queryData)
             instance[methods](url,queryData,config).then(res => {
                 resolve(res.data)
             }).catch(err => {
@@ -41,7 +41,13 @@ export const  $axios = {
 
 export function handletime(str){
     let time = new Date(str)
-    let newtime = time.toLocaleDateString() +" "+ time.toTimeString().substr(0, 8)
+    let year = time.getFullYear();
+    let month = time.getMonth() +1;
+    let day = time.getDate()
+    month = month < 10 ? '0' + month : month
+    day = day <10 ? '0' + day : day
+    // let newtime = time.toLocaleDateString() +" "+ time.toTimeString().substr(0, 8)
+    let newtime = `${year}-${month}-${day}`
     return newtime
 }
 

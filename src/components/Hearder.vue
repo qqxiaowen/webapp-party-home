@@ -41,14 +41,12 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 998;
-    width: 7.2rem;
+    z-index: 955;
     padding: 0 0.44rem ;
     box-sizing: border-box;
     width: 7.2rem;
     height: 1.11rem;
     color: #fff;
-    font-size: 0.3rem;
     text-align: center;
     line-height: 1.11rem;
     background: #c50206;

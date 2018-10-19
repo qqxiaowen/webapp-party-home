@@ -31,7 +31,7 @@
             <ul>
                 <li><router-link to='/dadilEyes'><img src="/static/img/icon_01.png">信工新闻眼</router-link></li>
                 <li><router-link to='/life'><img src="/static/img/icon_02.png">掌上组织生活</router-link></li>
-                <li><router-link to='/'><img src="/static/img/icon_03.png">党员云互动</router-link></li>
+                <li @click="isInteLogin"><router-link to='' ><img src="/static/img/icon_03.png">党员云互动</router-link></li>
                 <li><router-link to='/oneclick'><img src="/static/img/icon_04.png">党建一点通</router-link></li>
                 <li><router-link to='/showrank'><img src="/static/img/icon_05.png">党员亮身份</router-link></li>
                 <li><router-link to='/partytoday'><img src="/static/img/icon_06.png">党史上的今天</router-link></li>
@@ -59,6 +59,7 @@
     import 'swiper/dist/css/swiper.css'
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
     import Footer from '../components/Footer'
+    import { islogin } from '@/utils/redlogin'
 
     export default {
         components: {
@@ -76,11 +77,6 @@
                 // paginationClickable :true,
                 // mousewheelControl : true,
                 // observeParents:true,
-                on:{
-                    click: function(){
-                        alert('你点了Swiper'+this.activeIndex);
-                    },
-                },
             },
             
             // 数据
@@ -102,17 +98,16 @@
         },
         handleNewDetail(id){
             this.$router.push(`/NewDadil/${id}`)
+        },
+        isInteLogin(){
+            islogin('interaction',this)
         }
       
     },
     created(){
         this.getLunboData()
     },
-    // computed: {
-    //   swiper() {
-    //     return this.$refs.mySwiper.swiper
-    //   }
-    // }
+    
 
     }
 </script>
