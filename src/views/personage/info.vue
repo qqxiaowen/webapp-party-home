@@ -120,26 +120,9 @@ import { mapState } from 'vuex'
         components:{
             Hearder
         },
-        data(){
-            return{
-                userinfo:'',
-            }
+        computed:{
+            ...mapState(['userinfo','token'])
         },
-        // computed:{
-        //     ...mapState(['userinfo','token'])
-        // },
-        methods:{
-            getdata(){
-                this.$axios.get(`/user/userInfo.do`).then(res => {
-                    console.log(res)
-                    this.userinfo = res.data
-                    this.$store.commit('CHANGEINFO',this.userinfo)
-                })
-            }
-        },
-        created(){
-            this.getdata()
-        }
         
     }
 </script>

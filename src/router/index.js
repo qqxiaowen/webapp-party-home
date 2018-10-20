@@ -22,6 +22,8 @@ const components = {
   updateinfo:()=>import('@/views/personage/updateinfo'),
   score:()=>import('@/views/personage/score'),
   scoredetail:()=>import('@/views/personage/scoredetail'),
+  updatepsd:()=>import('@/views/personage/updatepsd'),
+  pay:()=>import('@/views/personage/pay'),
 }
 
 const router = new Router({
@@ -193,6 +195,22 @@ const router = new Router({
       },
       name:'scoredetail',
       component:components.scoredetail
+    },
+    {
+      path:'/updatepsd',
+      meta:{
+        desc:'修改密码',
+      },
+      name:'updatepsd',
+      component:components.updatepsd
+    },
+    {
+      path:'/pay',
+      meta:{
+        desc:'缴纳党费',
+      },
+      name:'pay',
+      component:components.pay
     },
     
     

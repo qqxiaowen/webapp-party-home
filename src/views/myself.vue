@@ -37,7 +37,7 @@
                    <img src="/static/img/lxjf.png" alt=""> 个人量化积分
                 </div>
             </div>
-            <div class="my-nav-item" >
+            <div class="my-nav-item" @click="handleUpdatepsd">
                 <div class="nav-right flr">
                     <i></i>
                 </div>
@@ -45,7 +45,7 @@
                    <img src="/static/img/xgmm.png" alt=""> 修改密码
                 </div>
             </div>
-            <div class="my-nav-item" >
+            <div class="my-nav-item" @click="handlepay">
                 <div class="nav-right flr">
                     <i></i>
                 </div>
@@ -74,6 +74,11 @@ import { Indicator } from 'mint-ui';
             Footer
         },
         methods:{
+            getdata(){
+                this.$axios.get(`/user/userInfo.do`).then(res => {
+                    this.$store.commit('CHANGEINFO',res.data)
+                })
+            },
             handleLoginOut(){
                 let userinfo = ''
                 let token = ''
@@ -94,7 +99,17 @@ import { Indicator } from 'mint-ui';
             },
             handleMyscore(){
                 islogin('score',this)
+            },
+            handleUpdatepsd(){
+                islogin('updatepsd',this)
+            },
+            handlepay(){
+                islogin('pay',this)
             }
+        },
+        created(){
+            // 重获数据
+            this.getdata()
         }
        
     }

@@ -208,7 +208,7 @@ import axios from 'axios'
                     Toast(res.msg)
                     if(res.code == 1){
                         setTimeout(() => {
-                            this.$router.push(`/info`)
+                            this.$router.push(`/myself`)
                         }, 300);
                     }
                 })
