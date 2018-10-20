@@ -29,7 +29,7 @@
                    <img src="/static/img/person.png" alt=""> 个人信息
                 </div>
             </div>
-            <div class="my-nav-item" >
+            <div class="my-nav-item" @click="handleMyscore" >
                 <div class="nav-right flr">
                     <i></i>
                 </div>
@@ -91,6 +91,9 @@ import { Indicator } from 'mint-ui';
                 // }else{
                 //     this.$router.push(`/login?redirect=info`)
                 // }
+            },
+            handleMyscore(){
+                islogin('score',this)
             }
         }
        

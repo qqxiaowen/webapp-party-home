@@ -10,7 +10,7 @@
                 <label>
                     <input style="display:none"  type="file" @change="handleupimg" >
                     <div class="flr">
-                        <img :src="userinfo.header" alt="">
+                        <img :src="imgurl" alt="">
                     </div>
                 </label> 
             </div>
@@ -161,8 +161,8 @@ import axios from 'axios'
                 userinfo:'',
                 joinTime:'',
                 lastTime:'',
-                token:'',
-                imgfile:''
+                imgurl:'', //图片img 修改后是base64格式
+                isupdateimg:false
             }
         },
       
@@ -198,45 +198,49 @@ import axios from 'axios'
                     salary:this.userinfo.salary,
                     joinPartyTime:this.userinfo.joinPartyTime,
                     lastPayTime:this.userinfo.lastPayTime,
-                    partyStatus:this.userinfo.partyStatus
-
+                    partyStatus:this.userinfo.partyStatus,
+                }
+                if(this.isupdateimg){
+                    obj.header = this.userinfo.header
                 }
                 this.$axios.post(`/user/modifyInfo.do`,obj).then( res => {
                     console.log(res)
                     Toast(res.msg)
                     if(res.code == 1){
-                        this.$store.commit('CHANGEINFO',this.userinfo)
                         setTimeout(() => {
                             this.$router.push(`/info`)
                         }, 300);
                     }
                 })
             },
-            getToken(){
-                axios.get(`http://mawenli.xyz:3000/getToken`).then(res => {
-                    console.log(res)
-                    this.token = res.data
-                })
-            },
-            handleupimg(e){
-                let file = e.target.files[0];
-                let forDate = new FormData()
-                forDate.append('file',file)
-                forDate.append('token',this.token)
-                axios.post(`https://upload-z1.qiniup.com`,forDate,{
-                    headers:{
-                        'Contnet-Type' : 'multipart/form-data'
-                    }
-                }).then (res => {
-                    console.log(res)
-                })
+            
+            // 姚哥修改 上传图片
+             handleupimg(e){
+                let _this = this
+                let myFile1 = e.target.files[0];
+                var reader = new FileReader();  
+                reader.onload = function (evt) {  
+                    let base64Data = evt.target.result
+                    _this.imgurl = base64Data
+                    const reg = /data:image\/png;base64,/
+                    let sendData = base64Data.replace(reg, '')
+                    _this.$axios.post(`/image/uploadBase64.do`,{myFile:sendData}).then (res => {
+                        console.log(res)
+                    _this.userinfo.header = res.url
+                    _this.isupdateimg = true;
+                    })
+
+                };  
+                reader.readAsDataURL(myFile1); 
             }
+
+            
 
         },
         
         created(){
             this.userinfo = this.$store.state.userinfo
-            this.getToken()
+            this.imgurl = this.$store.state.userinfo.header
         },
         
     }
@@ -303,7 +307,5 @@ import axios from 'axios'
     border: 7px solid transparent;
     border-top: 7px solid #333;
 }
-// label{
-//     input{}
-// }
+
 </style>

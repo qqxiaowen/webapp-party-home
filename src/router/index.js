@@ -20,6 +20,8 @@ const components = {
   interaction:()=>import('@/views/interaction'),
   info:()=>import('@/views/personage/info'),
   updateinfo:()=>import('@/views/personage/updateinfo'),
+  score:()=>import('@/views/personage/score'),
+  scoredetail:()=>import('@/views/personage/scoredetail'),
 }
 
 const router = new Router({
@@ -176,6 +178,23 @@ const router = new Router({
       name:'updateinfo',
       component:components.updateinfo
     },
+    {
+      path:'/score',
+      meta:{
+        desc:'个人量化积分',
+      },
+      name:'score',
+      component:components.score
+    },
+    {
+      path:'/scoredetail',
+      meta:{
+        desc:'积分明细',
+      },
+      name:'scoredetail',
+      component:components.scoredetail
+    },
+    
     
   ]
 })

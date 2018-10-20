@@ -33,7 +33,7 @@ import { Indicator,Toast } from 'mint-ui';
                     console.log(res)
                     if(res.code == 1){
                         let partyStatusName = ''
-                        switch(res.data. partyStatus){
+                        switch(res.data.partyStatus){
                             case 0:
                                 partyStatusName = '积极分子'
                                 break;

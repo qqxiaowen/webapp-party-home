@@ -106,7 +106,7 @@
         <div class="content">
             <div class="content-item">
                 <span>当前身份</span>
-                <div class="flr">{{userinfo.partyStatusName}}</div>
+                <div class="flr">{{userinfo.partyIdentity}}</div>
             </div>
         </div>
         
@@ -120,9 +120,26 @@ import { mapState } from 'vuex'
         components:{
             Hearder
         },
-        computed:{
-            ...mapState(['userinfo','token'])
+        data(){
+            return{
+                userinfo:'',
+            }
         },
+        // computed:{
+        //     ...mapState(['userinfo','token'])
+        // },
+        methods:{
+            getdata(){
+                this.$axios.get(`/user/userInfo.do`).then(res => {
+                    console.log(res)
+                    this.userinfo = res.data
+                    this.$store.commit('CHANGEINFO',this.userinfo)
+                })
+            }
+        },
+        created(){
+            this.getdata()
+        }
         
     }
 </script>

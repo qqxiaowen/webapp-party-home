@@ -24,6 +24,7 @@ export const  $axios = {
         return new Promise((resolve,rejects) => {
             
             let queryData = qs.stringify(data)
+            console.log(queryData)
             instance[methods](url,queryData,config).then(res => {
                 resolve(res.data)
             }).catch(err => {
