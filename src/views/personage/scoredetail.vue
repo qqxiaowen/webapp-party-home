@@ -1,7 +1,7 @@
 <template>
     <div class="pt110">
         <Hearder />
-        <Nullcontent v-if="!scoredata" />
+        <Nullcontent v-if="!scoredata&&istofoot" />
            <div v-infinite-scroll="loadMore"
                 infinite-scroll-disabled="isOffUpload"  >
                 <div class="item" v-for="(item,index) in scoredata" :key=index>

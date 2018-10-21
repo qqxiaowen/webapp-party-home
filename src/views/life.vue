@@ -9,18 +9,18 @@
                 <img src="/static/img/icon1.png" alt="">
                 <span>政治学习</span>
             </router-link>
-            <router-link to="" class="icon-item fll">
+            <div @click="handleThought" class="icon-item fll">
                 <img src="/static/img/icon2.png" alt="">
                 <span>思想汇报</span>
-            </router-link>
-            <router-link to="" class="icon-item fll">
+            </div>
+            <div @click="handleHeart" class="icon-item fll">
                 <img src="/static/img/icon3.png" alt="">
                 <span>心得总结</span>
-            </router-link>
-            <router-link to="" class="icon-item fll">
+            </div>
+            <div @click="handleFolk" class="icon-item fll">
                 <img src="/static/img/icon4.png" alt="">
                 <span>民主评议</span>
-            </router-link>
+            </div>
             <router-link to="/findteam" class="icon-item fll">
                 <img src="/static/img/icon5.png" alt="">
                 <span>流动党员找组织</span>
@@ -31,9 +31,21 @@
 
 <script>
 import Hearder from '@/components/Hearder'
+import {islogin} from '@/utils/redlogin'
     export default {
         components:{
             Hearder,
+        },
+        methods:{
+            handleThought(){
+                islogin('thought',this)
+            },
+            handleHeart(){
+                islogin('heart',this)
+            },
+            handleFolk(){
+                islogin('folkhome',this)
+            }
         }
     }
 </script>

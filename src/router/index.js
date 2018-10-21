@@ -16,7 +16,7 @@ const components = {
   partytoday:()=>import('@/views/newsPage/partytoday'),
   anyphoto:()=>import('@/views/newsPage/anyphoto'),
   life:()=>import('@/views/life'),
-  findteam:()=>import('@/views/findteam'),
+  findteam:()=>import('@/views/lifePage/findteam'),
   interaction:()=>import('@/views/interaction'),
   info:()=>import('@/views/personage/info'),
   updateinfo:()=>import('@/views/personage/updateinfo'),
@@ -24,6 +24,12 @@ const components = {
   scoredetail:()=>import('@/views/personage/scoredetail'),
   updatepsd:()=>import('@/views/personage/updatepsd'),
   pay:()=>import('@/views/personage/pay'),
+  thought:()=>import('@/views/lifePage/thought'),
+  heart:()=>import('@/views/lifePage/heart'),
+  folkhome:()=>import('@/views/lifePage/folkhome'),
+  personalsummary:()=>import('@/views/lifePage/folk/personalsummary'),
+  deliberate:()=>import('@/views/lifePage/folk/deliberate'),
+  lookperson:()=>import('@/views/lifePage/folk/lookperson'),
 }
 
 const router = new Router({
@@ -212,7 +218,54 @@ const router = new Router({
       name:'pay',
       component:components.pay
     },
-    
+    {
+      path:'/thought',
+      meta:{
+        desc:'思想汇报',
+      },
+      name:'thought',
+      component:components.thought
+    },
+    {
+      path:'/heart',
+      meta:{
+        desc:'心得总结',
+      },
+      name:'heart',
+      component:components.heart
+    },
+    {
+      path:'/folkhome',
+      meta:{
+        desc:'民主评议',
+      },
+      name:'folkhome',
+      component:components.folkhome,
+    },
+    {
+      path:'/personalsummary',
+      meta:{
+        desc:'个人总结',
+      },
+      name:'personalsummary',
+      component:components.personalsummary,
+    },
+    {
+      path:'/deliberate',
+      meta:{
+        desc:'民主评议',
+      },
+      name:'deliberate',
+      component:components.deliberate,
+    },
+    {
+      path:'/lookperson',
+      meta:{
+        desc:'民主评议',
+      },
+      name:'lookperson',
+      component:components.lookperson,
+    }
     
   ]
 })
