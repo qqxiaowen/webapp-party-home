@@ -7,13 +7,31 @@ var instance = axios.create({
     timeout: 15000,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'token' : store.state.token
+        // 'token' : store.state.token
     }
 });
+
+// 添加请求拦截器
+instance.interceptors.request.use( config => {
+    // 在发送请求之前做些什么
+    if(store.state.userinfo){
+        config.headers.token = store.state.token
+        // config.headers = {...config.headers,...{
+        //     'token' : store.state.token
+        // }}
+
+    }
+    return config;
+}, error => {
+    return Promise.reject(error); // 对请求错误做些什么
+});
+
+
 export const  $axios = {
-    get(url,data,config){
+    get(url,data, config){
         return new Promise((resolve,rejects) => {
-            instance.get(url,{params:data},config).then(res => {
+           
+            instance.get(url,{params:data, ...config}).then(res => {
                 resolve(res.data)
             }).catch(err =>{
                 rejects(err)
@@ -24,7 +42,7 @@ export const  $axios = {
         return new Promise((resolve,rejects) => {
             
             let queryData = qs.stringify(data)
-            console.log(queryData)
+            console.log('处理后的数据',queryData)
             instance[methods](url,queryData,config).then(res => {
                 resolve(res.data)
             }).catch(err => {

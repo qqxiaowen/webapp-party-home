@@ -17,7 +17,6 @@ const components = {
   anyphoto:()=>import('@/views/newsPage/anyphoto'),
   life:()=>import('@/views/life'),
   findteam:()=>import('@/views/lifePage/findteam'),
-  interaction:()=>import('@/views/interaction'),
   info:()=>import('@/views/personage/info'),
   updateinfo:()=>import('@/views/personage/updateinfo'),
   score:()=>import('@/views/personage/score'),
@@ -30,6 +29,8 @@ const components = {
   personalsummary:()=>import('@/views/lifePage/folk/personalsummary'),
   deliberate:()=>import('@/views/lifePage/folk/deliberate'),
   lookperson:()=>import('@/views/lifePage/folk/lookperson'),
+  interaction:()=>import('@/views/interaction'),
+  interDetail:()=>import('@/views/interDetail'),
 }
 
 const router = new Router({
@@ -265,6 +266,14 @@ const router = new Router({
       },
       name:'lookperson',
       component:components.lookperson,
+    },
+    {
+      path:'/interDetail',
+      meta:{
+        desc:'互动详情',
+      },
+      name:'interDetail',
+      component:components.interDetail,
     }
     
   ]

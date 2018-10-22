@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
        <ul>
-           <li><router-link :class="{active:$route.meta.name === 'home'}" to="/"><i class="iconfont icon-dangwugongkai"></i>首页</router-link></li>
-           <li><router-link :class="{active:$route.meta.name === 'message'}" to="/message"><i class="iconfont icon-xiaoxi4"></i>通知早知道</router-link></li>
-           <li><router-link :class="{active:$route.meta.name === 'myself'}" to="/myself"><i class="iconfont icon-wodedangxuan"></i>我的党建</router-link></li>
+           <li><router-link :class="{active:$route.name === 'home'}" to="/"><i class="iconfont icon-dangwugongkai"></i>首页</router-link></li>
+           <li><router-link :class="{active:$route.name === 'message'}" to="/message"><i class="iconfont icon-xiaoxi4"></i>通知早知道</router-link></li>
+           <li><router-link :class="{active:$route.name === 'myself'}" to="/myself"><i class="iconfont icon-wodedangxuan"></i>我的党建</router-link></li>
        </ul>
     </div>
 </template>
@@ -36,15 +36,12 @@
             height: 1.04rem;
             flex-direction: column;
             justify-content:center;
-            // line-height: 1.04rem;
             align-items: center;
-            // text-align: center;
             color: #aaaaaa;
             font-size: 0.24rem;
             i{
                 font-size: 0.44rem;
             }
-            
         }
         .active{
             color: #c7000a;
@@ -54,8 +51,6 @@
     }
 }
 </style>
-<style>
-@import '../viewStyles/home.less';
-</style>
+
 
 

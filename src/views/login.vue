@@ -50,13 +50,23 @@ import { Indicator,Toast } from 'mint-ui';
                         this.$store.commit('CHANGETOKEN',res.token)
                         Indicator.open('登陆中...');
                         let url ='myself'
+                        let isreplace = false
                         if(this.$route.query&&this.$route.query.redirect){
                             url = this.$route.query.redirect
+                            isreplace = true;
                         }
-                        setTimeout(() => {
-                            this.$router.push(`/${url}`)
-                            Indicator.close();
-                        }, 300);
+                        if(isreplace){
+                            setTimeout(() => {
+                                this.$router.replace(`/${url}`)
+                                Indicator.close();
+                            }, 300);
+                        }else{
+                             setTimeout(() => {
+                                this.$router.push(`/${url}`)
+                                Indicator.close();
+                            }, 300);
+                        }
+                        
                     }else{
                         Toast(res.msg);
                     }

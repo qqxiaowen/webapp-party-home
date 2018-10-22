@@ -8,6 +8,7 @@ const store = new Vuex.Store({
     state: {
       userinfo:{},
       token:'',
+      interact:'',
     },
     mutations: {
       'CHANGEINFO' (state,payload) {
@@ -15,6 +16,9 @@ const store = new Vuex.Store({
       },
       'CHANGETOKEN' (state,payload) {
         state.token = payload
+      },
+      'CHANGEINTERACT' (state,payload) {
+        state.interact = payload
       }
     },
 
